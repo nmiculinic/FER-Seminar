@@ -54,4 +54,4 @@ least as large as p% of the list.
 * percentile and averages does not necessarily relate. They depend on underlying distribution
 
 ###Markov inequality
-
+In non-negative data sets, upper bound of values $\ge k\mu$ is $1/k$
