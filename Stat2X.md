@@ -55,3 +55,54 @@ least as large as p% of the list.
 
 ###Markov inequality
 In non-negative data sets, upper bound of values $\ge k\mu$ is $1/k$
+
+###Measuring spread
+* range
+* IRQ - Interquartile range
+* Standard Deviation (why n in formula for descriptive statistics and n-1 otherwise???)
+###Chebychev Inequality
+* Percent of proportion outside the range average ±k×SD is
+at most 1/k^2 
+
+##Week 3
+###Normal curves 
+* inflexions points and mu +- sd
+* Need more information?? -proofs, common theorems and all that jazz. This section is rather week
+* Tests whether distribution is normal?? How can I know which distribution fits best to the data??
+
+##Week 4
+###Bivariate data
+* scatter plot
+* vertical and horizontal slice
+* vertical and horizontal scatter
+* association: any relation between variables
+* positive association: above average values of one variable tend to go with above average values of the other; the scatter slopes up
+* negative association: above average values of one variable tend to go with below average values of the other; the scatter slopes down
+* linear association: roughly, the scatter diagram is clustered around a straight linear
+* Homoscedasticity and Heteroscedasticity
+* football shaped.. is that multivariate gaussian??
+
+###Correlation coefficient
+* between -1 and 1
+* invariant on coordinate axes and linear transformations (difference between affine and linear??)
+* Need more proofs.
+* simple formula => 1/n * dot product of z-scores of data. Maybe there is something more to this explanation??
+* How to generate plot with given r??
+* Ecological Correlation - clustering on averages (e.g. instead of student results taking into account state results) artificially increases correlation
+
+###Linear regression
+* minimizing rms error of estimate. $\sqrt(\frac{1}{n}\sum{(a*x_i + b - y_i)^2}$
+* formula given as y (in standard units) = r * x (in standard units)
+* I know usual calculus based approach in proving (without all the r business). Would like to see bit more detail 
+* regression towards the mean
+* regression fallacy
+
+###Linear regression error
+* rms error of regression line = sqrt(1-r^2) * sd(Y) irrelevant of scatter diagram
+* Residual plot - differences between data and regression line (the best one)
+	* average is 0
+	* no linear association between residuals and x
+	* Good regression: Residual plot looks like a formless blob around the horizontal axis.
+	* Heteroscedasticity - different spread on residual plot
+	* Outliers - unusually large positive or negative value on residual plot
+	* Nonlinearity - residuals predominantly positive/negative on section of residual plot
