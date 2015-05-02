@@ -181,7 +181,7 @@
 %	defined as \examname above so you cite it as \examname
 %----------------------------------------------------------------------------------------
 
-\thesistitle{ANOVA} % Your thesis title - this is used in the title and abstract
+\thesistitle{Statisticko testiranje} % Your thesis title - this is used in the title and abstract
 %-------------------------------------------------  
 \supervisor{Prof. dr. sc. Bojana \textsc{Dalbelo-Bašić} \\ Dr. sc. Goran \textsc{Glavaš}} % You supervisor's name - this is used in the title page
 %-------------------------------------------------   
