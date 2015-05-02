@@ -1,0 +1,32 @@
+\chapter{Hipoteza}
+\lhead{\emph{Hipoteza}}
+Sto sve moze biti hipoteza. U uvodu smo vidjeli neke primjere, dok cu se ovdje baviti s dvaja pojma: 
+\begin{itemize}
+	\item Null hipoteza \textit{(eng. Null hypothesis)} $H_0$
+	\item Altrenativna hipoteza \textit{(eng. Altrenative hypothesis)} $H_a$
+\end{itemize}
+
+\section{Null hipoteza}
+Null hipoteza je nasa osnova pretpostavka o parametru populacije. Ona kao takva podlijeze statistici uzorka te populaciju. Zasto uzorka? Evo jedan primjer. Zelimo provjeriti hipotezu iz uvoda \emph{na FERu je 99\% muskaraca}. Nerealno je i skupo ici od svakog pojedinca na fakultetu, provjeriti s kojeg je on faksa te zapravo analizirati svakog pripadnika populacije. 
+
+Time se bavi deskriptivna statstika, dok statisticka testiranja ulaze u inferencijsku statistiku. 
+
+Zato radimo uzorak od $n$ primjeraka iz populacije i na temelju njih zakljcujemo za cijelu populaciju. Naravno zanima nas kolika je greska toga naseg suda.
+
+\section{Altrenativna hipoteza}
+No sto ako nasa hipoteza nije tocna? Onda vrijedi altrentivna hipoteza. Evo dat cu primjer. 
+
+Neka je $H_0:$ \emph{Varianca bodova na SISu je 15}. tj. $H_0:\; \Theta = 15$. Sto bi bila altrenativna hipoteza? 
+
+Logicno negacija $H_0$ te je time $H_a:\; \Theta \ne 15$. Ovo je dvostrana altrenativna hipoteza jer parametar $\Theta$ u altrenative moze biti i veci i manji od nulla. 
+
+Postoji jos jedana mogucnost altrenativne hipoteze, a to je jednostrana. Glasi ovako: $H_a:\; \Theta > 15$ ili $H_a:\; \Theta < 15$. Kao sto vidimo ova altrenativna hipoteza gleda samo jednu stranu toga parametra te se zato zove jednostavna. 
+
+Kada rabimo koju? Ako iz uzorka dobijemo $\hat{\Theta} = 16$ logicnije je uzeti jednostranu koja kaze $H_a: \; \Theta > 15$
+
+\marginnote{Sada kada malo razmislim, nije mi bas najjasnije tocno kada korstimo jednostranu altrenativu, a kada dvostranu}
+
+Najcesce uzimamo dvostranu altrenativnu hipotezu osim ukoliko nam nije bitno... la la.
+
+\section{Primjeri}
+Imamo tvornicu igracaka i bitno nam je da su igracke u projeku vece od 15 cm. Tj. $\mu > 15cm$. Proizvodni proces je nastiman tako da prosjek bude 16 cm s nepoznatom varijancom. Naravno, samo zato jer je proces tako nastima, to ne znaci da se on u stvarnosti tako i ponasa. Stoga je ovdje prirodno uzeti $H_0:\; \mu = 16cm$ te $H_a: \mu < 16cm$ buduci da nam je dulje od 15 cm nego da je tocan prosjek.

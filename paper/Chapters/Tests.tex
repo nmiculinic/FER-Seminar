@@ -1,0 +1,36 @@
+\chapter{Odluke Odluke}
+E sada kada smo prezentirali hipoteze trebamo se za jednu odluciti te odrediti koliko smo sigurni u nasu pretpostavku. Imamo 4 moguca ishoda:
+
+% http://www.tablesgenerator.com/
+
+\begin{table}[h]
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{cc|c|c|}
+\cline{3-4}
+ &  & \multicolumn{2}{c|}{Null hypothesis is} \\ \cline{3-4} 
+ &  & True & False \\ \hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Presuda testa je:}} & Odbaci & \begin{tabular}[c]{@{}c@{}}Type I error\\ False Positive\\ Sansa je significance level $\alpha$\end{tabular} & Tocno \\ \cline{2-4} 
+\multicolumn{1}{|c|}{} & Prihvati (Fail to accept) & Tocno & \begin{tabular}[c]{@{}c@{}}Type II error\\ $\beta$\\ False Negative\end{tabular} \\ \hline
+\end{tabular}
+}
+\end{table}
+
+Kakav god test odabrali da potvrdimo ili odbacimo $H_0$ on moze rezultirati u Type I ili Type II greskama. Evo jednog ilustrativnog primjera za Type I gresku.
+
+Situacija je sljedeca. Vi ste cuvar nekoga sela i vasa je duznost oglasiti uzbunu ukoliko se vuk priblizava. Time je $H_0$ vuka nema. E ukoliko vuka stvarno nema, a vi ste oglasili uzbunu vi ste nacinili Type I pogresku ilitiga False positive.
+
+Slicnu scenarij mozete vidjeti i s testom za trudnocu. Ukoliko krecete od hipoteze  $H_0:$ \emph{Nema trudnoce} te $H_a:$ \emph{trudnoca} te stvarno niste trudni, ali test pokazuje trudnocu to je jos jedan primjer Type I greske. Ona se oznacava s grckim slovom $\alpha$ te se naziva nivo znacajnost testa \textit{(eng. significance level)}. 
+
+Pri samoj konstrukcji statistickog testa ukoliko je $H_0$ tocna mozemo lijepo ustimati $\alpha$ na prihvatljivu granicu te ga mozemo lijepo ustimati jer cesto pretpostavljamo kako funkcija razdiobe izgleda. \marginnote{Ovdje dodati jos par slika i lijepse pojasniti}
+
+\marginnote{Kod svih ovih testova koliko mi pretpostavljamo o funkciji razdiobe? Da li i u altrenativi pretpostavljamo normalnu npr. samo s drugim parametrima ili kako?}[2cm]
+
+No dobro, ovo je sve super, mozemo nastimati test da nam je $\alpha \approx 0$ no sto time dobivamo? Tu u pricu ulaze Type II greske koje imaju vjerojatnost $\beta$. Ona se dogada kada je $H_0$ netocno, no test neuspijeje pobiti $H_0$ nego presudi tocnosti null hipoteze.
+
+Koristeci primjere iz prethodne sekcije, vas test presudi da vuka nema dok on stvarno dolazi pred vasa vrata. Takoder vi ste trudni dok test za trudnocu to ne pokazuje dok nije prekasno. Faktor $\beta$ je povezan s pojmom \emph{snaga testa} \textit{(eng. power)} koja iznosti $1-\beta$. Ona je definirana kao vjerojatnost da ce test odbiti $H_0$ kada je ona lazna. 
+
+No taj faktor $\beta$ je cesto nemoguce odrediti bez nekih pretpostavki. Npr. ((ovdje ubaciti neku normalnu distribuciju i koliko je beta ako je $\mu  + \delta$ te kako on ovisi. Malo matematike i formulu upisati))
+
+Kod svakog statistickog testa dolazimo do balansacije snage i znacajnosti istoga. Sto je veca snaga testa to je veca znacajnost i obratno. Idealni test bi imao snagu 1 te znacajnost 0, no to u praksi nije moguce, te time treba pazljivo balansirati ta dva parametra tjekom izrade samoga testa.
+
+\marginnote{Koliko se parametri slucajne varijable mijenjaju kod linearnih transformacija? Konkretno pdf, $\mu$, $\sigma$ i $\sigma^2$. Koliko sam skuzio isto linearno osim varijance koja se kvadratno mijenja}
