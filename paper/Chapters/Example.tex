@@ -1,0 +1,63 @@
+\chapter{Statistiko testiranje na prosjek uzorka}
+
+U ovom poglavlju cu prikazati kako se testiranje vrsi na prosjek uzoraka. Prvo pretpostavljamo da je populacija normalno distribuirana ili barem priblizno normalno distribuirana.
+
+Zatim zelimo odrediti koliki nam mora biti uzorak iz te populacije da bi znacajnost testa te njegova snaga bila zadovoljavajuca i uz to sve izbalansirati. 
+
+\marginnote{ok, kako odrediti velicinu uzorka? Ako znamo varijancu mozemo pretpostaviti da ce biti distribuiran s $\mathcal{N}(\mu + \delta, \sigma^2)$ te onda odrediti preciznost $\delta$, $\beta$ i onda iz toga $n$.}
+
+Treba naravno napomenti da ce uzorak biti distribuiran po T distribuciji jer nam varijanca populacije nije poznata te pretpostavljamo normalnu distribuciju populacije.
+
+Ukoliko je $H_0$ tocna nasa statisika: \[\frac{\sqrt{n} (\hat{\mu} - \mu)}{s} \sim T_{n-1}\]
+
+slijedi $T$ distribuciju s $n-1$ stupnja slobode. Nakon malo matematike uz pretpostavku $H_0$:
+
+\[
+\hat{\mu} \sim \frac{s}{\sqrt{n}} \cdot T_{n-1} + \mu
+\]
+
+Uz znacajnost testa $\alpha$ dobivamo gornji i doljni interval pouzdanosti kao:
+
+\[
+\hat{\mu} \in \left< \frac{s}{\sqrt{n}} \cdot T_{n-1, \frac{\alpha}{2}} + \mu, \frac{s}{\sqrt{n}} \cdot T_{n-1, 1 - \frac{\alpha}{2}} + \mu \right>
+\]
+
+gdje $T_{n, \alpha}$ gdje pretstavlja $\alpha$ percentila $T$ distribucije s $n$ stupnjeva slobode.
+
+Potom uz odredeni $\alpha$ napravimo intervale pouzdanosti za ovaj test. Ukoliko je prosjek uzorka unutar tog intervala nas test nije odbio $H_0$ te je presuda null hipoteza, dok u suprotnom biramo $H_a$ tj. altrenativnu hipotezu.
+
+
+\marginnote{Treba ovdje uzeti neki primjer podataka i lijepo ih obraditi}[5cm]
+
+Kako bi bili u mogucnosti efokasno i bezbolno raditi ovaj tip testova sljedeci programski kod pisan u pythonu te koristeci numpy biblioteku radi za nas:
+
+\begin{figure}[H]
+\begin{minted}{python}
+from pylab import *
+from numpy import *
+from scipy.stats import t, norm
+from numpy.random import normal
+
+#Ovo je primjer ulaznih podata za testiranje
+data = normal(3.1, 2, 15)
+mu_test = 3
+alpha = 0.05
+
+
+n = data.size        # Broj uzoraka
+s = data.std(ddof=1) # Procjena standardne devijacije populaije (ne uzoraka)
+mu_s = data.mean()   # Procjena prosjeka iz uzoraka
+mu_s_s = s/sqrt(n)   # Standardna devijacija prosjeka uzoraka
+
+#Plottanje cisto da vidimo ulazne podatke
+hist(data, bins=7);
+
+(l,u) = t.interval(1-alpha, n - 1, mu_test,  mu_s_s)
+print (l,u) #Interval pouzdanosti
+
+if l < mu_s and  mu_s < u:
+    print ("H_0")
+else:
+    print ("H_a")
+\end{minted}
+\end{figure}

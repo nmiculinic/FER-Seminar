@@ -1,4 +1,7 @@
 \chapter{Odluke Odluke}
+
+\section{Greske}
+
 E sada kada smo prezentirali hipoteze trebamo se za jednu odluciti te odrediti koliko smo sigurni u nasu pretpostavku. Imamo 4 moguca ishoda:
 
 % http://www.tablesgenerator.com/
@@ -19,13 +22,13 @@ Kakav god test odabrali da potvrdimo ili odbacimo $H_0$ on moze rezultirati u Ty
 
 Situacija je sljedeca. Vi ste cuvar nekoga sela i vasa je duznost oglasiti uzbunu ukoliko se vuk priblizava. Time je $H_0$ vuka nema. E ukoliko vuka stvarno nema, a vi ste oglasili uzbunu vi ste nacinili Type I pogresku ilitiga False positive.
 
-Slicnu scenarij mozete vidjeti i s testom za trudnocu. Ukoliko krecete od hipoteze  $H_0:$ \emph{Nema trudnoce} te $H_a:$ \emph{trudnoca} te stvarno niste trudni, ali test pokazuje trudnocu to je jos jedan primjer Type I greske. Ona se oznacava s grckim slovom $\alpha$ te se naziva nivo znacajnost testa \textit{(eng. significance level)}. 
+Slicnu scenarij mozete vidjeti i s testom za trudnocu. Ukoliko krecete od hipoteze  $H_0:$ \emph{Nema trudnoce} te $H_a:$ \emph{trudnoca} te stvarno niste trudni, ali test pokazuje trudnocu to je jos jedan primjer Type I greske. Ona se oznacava s grckim slovom $\alpha$ te se naziva nivo znacajnost testa \textit{(eng. significance level)}.
 
 Pri samoj konstrukcji statistickog testa ukoliko je $H_0$ tocna mozemo lijepo ustimati $\alpha$ na prihvatljivu granicu te ga mozemo lijepo ustimati jer cesto pretpostavljamo kako funkcija razdiobe izgleda. \marginnote{Ovdje dodati jos par slika i lijepse pojasniti}
 
 \marginnote{Kod svih ovih testova koliko mi pretpostavljamo o funkciji razdiobe? Da li i u altrenativi pretpostavljamo normalnu npr. samo s drugim parametrima ili kako?}[2cm]
 
-No dobro, ovo je sve super, mozemo nastimati test da nam je $\alpha \approx 0$ no sto time dobivamo? Tu u pricu ulaze Type II greske koje imaju vjerojatnost $\beta$. Ona se dogada kada je $H_0$ netocno, no test neuspijeje pobiti $H_0$ nego presudi tocnosti null hipoteze.
+No dobro, ovo je sve super, mozemo nastimati test da nam je $\alpha \approx 0$ no sto time dobivamo? Tu u pricu ulaze Type II greske koje imaju vjerojatnost $\beta$. Ona se dogada kada je $H_0$ netocno, no test neuspijeje pobiti $H_0$ nego presudi tocnosti nul hipoteze.
 
 Koristeci primjere iz prethodne sekcije, vas test presudi da vuka nema dok on stvarno dolazi pred vasa vrata. Takoder vi ste trudni dok test za trudnocu to ne pokazuje dok nije prekasno. Faktor $\beta$ je povezan s pojmom \emph{snaga testa} \textit{(eng. power)} koja iznosti $1-\beta$. Ona je definirana kao vjerojatnost da ce test odbiti $H_0$ kada je ona lazna. 
 
@@ -34,3 +37,17 @@ No taj faktor $\beta$ je cesto nemoguce odrediti bez nekih pretpostavki. Npr. ((
 Kod svakog statistickog testa dolazimo do balansacije snage i znacajnosti istoga. Sto je veca snaga testa to je veca znacajnost i obratno. Idealni test bi imao snagu 1 te znacajnost 0, no to u praksi nije moguce, te time treba pazljivo balansirati ta dva parametra tjekom izrade samoga testa.
 
 \marginnote{Koliko se parametri slucajne varijable mijenjaju kod linearnih transformacija? Konkretno pdf, $\mu$, $\sigma$ i $\sigma^2$. Koliko sam skuzio isto linearno osim varijance koja se kvadratno mijenja}
+
+\section{Intervali pouzdanosti}
+Potom zelimo konstruirati intervale pouzdanosti za nas test. Ponovimo imamo $H_0$ hipotezu koja pretpostavlja neke parametre o distribuciju koju zelimo testirati. Na primjer imamo $H_0: X \sim \mathcal{N}(\mu, \sigma^2)$ tj. po normalnoj distribuciji. Onda dvostrani ($1-\alpha$)ti interval pouzdanosti se dobije kao $\left< \mathcal{N}(\mu, \sigma^2)_{\frac{\alpha}{2}}, \mathcal{N}(\mu, \sigma^2)_{1-\frac{\alpha}{2}}\right>$ gdje $\mathcal{N}(\mu, \sigma^2)_\alpha$ predstavlja $\alpha$ precentilu distribucije.
+
+Takoder opcenito ako $H_0: X \sim \mathcal{D}$ onda je dvostrani interval pouzdanosti: 
+$\left< \mathcal{D}_{\frac{\alpha}{2}}, \mathcal{D}_{1-\frac{\alpha}{2}} \right>$. Naravno mozemo slicno definirati i gornji interval pouzdanosti kao  
+$\left< \mathcal{D}_\alpha, +\infty \right>$ te doljni kao 
+$\left< -\infty, \mathcal{D}_{1-\alpha} \right>$
+
+\section{P vrijednosti}
+p-vrijednost odgovara vjerojatnosti da je nul-hipoteza tocna (tj. vjerojatnosti dobivanja uocene ili još vece razlike na slucajnim uzorcima). Takoder je najmanja $\alpha$ za koju ce nas test ne odbaciti $H_0$\marginnote{Kako lijepo ovdje napisati fail to rejecet $H_0$ jer to ovo zapravo i radi. Ne dokazuje $H_0$ nego ju samo ne odbacuje.}
+
+\subsection{Opasnosti p vrijednosti}
+Treba naravno uzeti u obzir sto p vrijednosti objasnjavaju. Po uzoru na clanak\footnote{\url{http://rsos.royalsocietypublishing.org/content/1/3/140216}} ukoliko puno razlicitih populacija testiramo s relativno velikom p vrijednoscu od 5\% vjerojatnost laznog otkrica nije zanemariva. \marginnote{Koliko o ovome trebam detaljnije pisati u seminaru? Clanak super objasnjava sto je problematika bolje nego sto mogu ja u nekoliko paragrafa}
