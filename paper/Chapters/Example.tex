@@ -1,6 +1,6 @@
 \chapter{Statističko testiranje na prosjek uzorka}
 
-U ovom poglavlju cu prikazati kako se testiranje vrsi na prosjek uzoraka. Prvo pretpostavljamo da je populacija normalno distribuirana ili barem priblizno normalno distribuirana.
+U ovom poglavlju cu prikazati kako se testiranje vrsi na prosjek uzoraka. Prvo pretpostavljamo da je populacija normalno distribuirana ili je broj uzoraka dovoljno velik da uvijeti centralnog granicnog teorema se primjenjuju tj. da statistika prosjeka bude normalno distribuirana. 
 
 Zatim zelimo odrediti koliki nam mora biti uzorak iz te populacije da bi znacajnost testa te njegova snaga bila zadovoljavajuca i uz to sve izbalansirati. 
 
@@ -16,13 +16,13 @@ slijedi $T$ distribuciju s $n-1$ stupnja slobode. Nakon malo matematike uz pretp
 \hat{\mu} \sim \frac{s}{\sqrt{n}} \cdot T_{n-1} + \mu
 \]
 
-Uz znacajnost testa $\alpha$ dobivamo gornji i doljni interval pouzdanosti kao:
+Uz znacajnost testa $\alpha$ dobivamo gornji i doljni interval pouzdanosti kao \cite{matstat}:
 
 \[
-\hat{\mu} \in \left< \frac{s}{\sqrt{n}} \cdot T_{n-1, \frac{\alpha}{2}} + \mu, \frac{s}{\sqrt{n}} \cdot T_{n-1, 1 - \frac{\alpha}{2}} + \mu \right>
+\hat{\mu} \in \left<\mu - \frac{s}{\sqrt{n}} \cdot T_{n-1, \frac{\alpha}{2}}, \mu + \frac{s}{\sqrt{n}} \cdot T_{n-1, \frac{\alpha}{2}} \right>
 \]
 
-gdje $T_{n, \alpha}$ gdje pretstavlja $\alpha$ percentila $T$ distribucije s $n$ stupnjeva slobode.
+gdje $T_{n, \alpha}$ gdje pretstavlja $1-\alpha$ percentila $T$ distribucije s $n$ stupnjeva slobode, prikazano u prethodnom poglavlju.
 
 Potom uz odredeni $\alpha$ napravimo intervale pouzdanosti za ovaj test. Ukoliko je prosjek uzorka unutar tog intervala nas test nije odbio $H_0$ te je presuda null hipoteza, dok u suprotnom biramo $H_a$ tj. altrenativnu hipotezu.
 
