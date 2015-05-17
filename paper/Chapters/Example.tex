@@ -1,35 +1,32 @@
-\chapter{Statističko testiranje na prosjek uzorka}
+\chapter{Statističko testiranje ocekivanja}
 
-U ovom poglavlju cu prikazati kako se testiranje vrsi na prosjek uzoraka. Prvo pretpostavljamo da je populacija normalno distribuirana ili je broj uzoraka dovoljno velik da uvijeti centralnog granicnog teorema se primjenjuju tj. da statistika prosjeka bude normalno distribuirana. 
+U ovom poglavlju cu prikazati kako se testiranje vrsi na prosjek uzoraka. Prvo pretpostavljamo da je populacija normalno distribuirana.
 
-Zatim zelimo odrediti koliki nam mora biti uzorak iz te populacije da bi znacajnost testa te njegova snaga bila zadovoljavajuca i uz to sve izbalansirati. 
+Zatim zelimo odrediti koliki nam mora biti uzorak iz te populacije da bi znacajnost testa te njegova snaga bila zadovoljavajuca i uz to sve izbalansirati. Konkretni postupci odredivanj velicine uzorka izlaze izvan okvira ovog seminara.
 
-\marginnote{ok, kako odrediti velicinu uzorka? Ako znamo varijancu mozemo pretpostaviti da ce biti distribuiran s $\mathcal{N}(\mu + \delta, \sigma^2)$ te onda odrediti preciznost $\delta$, $\beta$ i onda iz toga $n$.}
+Treba naravno napomenti da ce uzorak biti distribuiran po $t$ distribuciji jer nam varijanca populacije nije poznata te pretpostavljamo normalnu distribuciju populacije.
 
-Treba naravno napomenti da ce uzorak biti distribuiran po T distribuciji jer nam varijanca populacije nije poznata te pretpostavljamo normalnu distribuciju populacije.
+Ukoliko je $H_0$ tocna nasa statisika: \[\frac{\sqrt{n} (\bar{x} - \mu)}{s} \sim t_{n-1}\]
 
-Ukoliko je $H_0$ tocna nasa statisika: \[\frac{\sqrt{n} (\hat{\mu} - \mu)}{s} \sim T_{n-1}\]
-
-slijedi $T$ distribuciju s $n-1$ stupnja slobode. Nakon malo matematike uz pretpostavku $H_0$:
+slijedi $t$ distribuciju s $n-1$ stupnja slobode. Nakon malo matematike uz pretpostavku $H_0$:
 
 \[
-\hat{\mu} \sim \frac{s}{\sqrt{n}} \cdot T_{n-1} + \mu
+\bar{x} \sim \frac{s}{\sqrt{n}} \cdot t_{n-1} + \mu
 \]
 
-Uz znacajnost testa $\alpha$ dobivamo gornji i doljni interval pouzdanosti kao \cite{matstat}:
+Uz znacajnost testa $\alpha$ dobivamo podrucje prihvacanja $H_0$ kao \cite{matstat}:
 
 \[
-\hat{\mu} \in \left<\mu - \frac{s}{\sqrt{n}} \cdot T_{n-1, \frac{\alpha}{2}}, \mu + \frac{s}{\sqrt{n}} \cdot T_{n-1, \frac{\alpha}{2}} \right>
+\bar{x} \in \left<\mu - \frac{s}{\sqrt{n}} \cdot t_{n-1, \frac{\alpha}{2}}, \mu + \frac{s}{\sqrt{n}} \cdot t_{n-1, \frac{\alpha}{2}} \right>
 \]
 
-gdje $T_{n, \alpha}$ gdje pretstavlja $1-\alpha$ percentila $T$ distribucije s $n$ stupnjeva slobode, prikazano u prethodnom poglavlju.
+gdje $t_{n, \alpha}$ gdje pretstavlja $1-\alpha$ percentila $t$ distribucije s $n$ stupnjeva slobode, prikazano u prethodnom poglavlju.
 
-Potom uz odredeni $\alpha$ napravimo intervale pouzdanosti za ovaj test. Ukoliko je prosjek uzorka unutar tog intervala nas test nije odbio $H_0$ te je presuda null hipoteza, dok u suprotnom biramo $H_a$ tj. altrenativnu hipotezu.
+Potom uz odredeni $\alpha$ napravimo podrucje prihvacanja za ovaj test. Ukoliko je prosjek uzorka unutar tog intervala nas test nije odbio $H_0$ te je presuda nul hipoteza, dok u suprotnom biramo $H_a$.
 
+\marginnote{Treba ovdje uzeti neki primjer podataka i lijepo ih obraditi... ako stignem}[5cm]
 
-\marginnote{Treba ovdje uzeti neki primjer podataka i lijepo ih obraditi}[5cm]
-
-Kako bi bili u mogucnosti efokasno i bezbolno raditi ovaj tip testova sljedeci programski kod pisan u pythonu te koristeci numpy biblioteku radi za nas:
+U nastavku je dan primjer programskog koda koju uz pythona te biblioteka NumPy odraduje cijeli postupak testiranja.
 
 \begin{figure}[H]
 \begin{minted}{python}
@@ -53,7 +50,7 @@ mu_s_s = s/sqrt(n)   # Standardna devijacija prosjeka uzoraka
 hist(data, bins=7);
 
 (l,u) = t.interval(1-alpha, n - 1, mu_test,  mu_s_s)
-print (l,u) #Interval pouzdanosti
+print (l,u) #Podrucje prihvacanja
 
 if l < mu_s and  mu_s < u:
     print ("H_0")

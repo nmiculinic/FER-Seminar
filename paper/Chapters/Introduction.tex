@@ -1,8 +1,9 @@
 \chapter{Uvod}
 \lhead{\emph{Uvod}}
-\label{Chapter1} % For referencing the chapter elsewhere, use \ref{Chapter1} 
+\label{Chapter1}
 
-Ovaj seminar se bavi statistickim testovima, tj. provjeravanjem ili pobijanjem hipoteza. Pocetna premisa je jednostavna, imamo neku hipotezu koju zelimo provjeriti. Ona moze biti svakojaka:
+Ovaj seminar se bavi statistickim testovima, tj. prihvacanjem ili odbacivanjem hipoteza.
+Pocetna premisa je jednostavna, imamo neku hipotezu koju zelimo provjeriti. Ona moze biti svakojaka:
 
 \begin{itemize}
 	\item na FERu je 99\% muskaraca 
@@ -10,8 +11,12 @@ Ovaj seminar se bavi statistickim testovima, tj. provjeravanjem ili pobijanjem h
 	\item Varianca bodova na SISu je 15
 \end{itemize}
 
-Kao sto vidimo u primjerima one testiraju vjerojatnost za neki paramater u populaciji $\Theta$. On moze biti svakojak kao sto vidimo u primjerima: postotak pripadnika jedne subpopulacije u populaciji, broj, varijanca neke statistike i mnoge druge oblike.
+Kao sto vidimo u primjerima one testiraju vjerojatnost za neki paramater u populaciji $\Theta$. On moze biti svakojak kao sto vidimo u primjerima: postotak pripadnika jedne subpopulacije u populaciji, broj, varijanca neke statistike i mnoge druge oblike. Za daljne primjere slucajna varijabla populacije ce biti $X$.
 
-Na temelju uzorka iz populacije donosimo zakljucke. Buduci da sami uzorci podlijezu sansi (npr. nas uzorak FERovaca sastoji se od 20 zena no prezentira li to sliku populacije?) zelimo znati koliko su sigurne nase pretpostavke.
+Uzorak nazivamo $n$-torku $(x_1, \ldots, x_n)$ koji su nezavisne realizacije slucajne varijable $X$. One imaju identicnu razdiobu kao i ona.\cite{vis3}
+
+Statistikom nazivamo svaku funkciju koja ovisi o uzorku $X_1 , X_2 , \ldots X_n$ , a ne ovisi (eksplicitno) o nepoznatom parametru kojeg dobivamo iz tog uzorka. \cite{vis3} Vrijednost te statistike naziva se procjenom parametra. \cite{vis3}
+
+Na temelju uzorka iz populacije donosimo zakljucke. Buduci da sami uzorci podlijezu sansi (npr. nas uzorak FERovaca sastoji se od 20 zena no prezentira li to sliku populacije?) zelimo znati koliko su sigurne nase pretpostavke. 
 
 \marginnote{Dodati neku sliku koja prezentira pogresku u uzorkovanju kroz statitski bias... npr. radimo anketu o bolestima pluca na studentima dok time netocno inferiramo za cijelu populaciju}

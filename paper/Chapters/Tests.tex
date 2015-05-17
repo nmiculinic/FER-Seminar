@@ -2,7 +2,7 @@
 
 \section{Greske}
 
-E sada kada smo prezentirali hipoteze trebamo se za jednu odluciti te odrediti koliko smo sigurni u nasu pretpostavku. Imamo 4 moguca ishoda:
+Nakon uvoda u osnovne pojmove vezane uz hipotezu pogledajmo s kolikom sigurnoscu mozemo tvrditi istinost nase prosudbe u tesu. Imamo 4 moguca ishoda:
 
 % http://www.tablesgenerator.com/
 
@@ -10,59 +10,54 @@ E sada kada smo prezentirali hipoteze trebamo se za jednu odluciti te odrediti k
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{cc|c|c|}
 \cline{3-4}
- &  & \multicolumn{2}{c|}{Null hypothesis is} \\ \cline{3-4} 
- &  & True & False \\ \hline
-\multicolumn{1}{|c|}{\multirow{2}{*}{Presuda testa je:}} & Odbaci & \begin{tabular}[c]{@{}c@{}}Type I error\\ False Positive\\ Sansa je significance level $\alpha$\end{tabular} & Tocno \\ \cline{2-4} 
-\multicolumn{1}{|c|}{} & Prihvati (Fail to accept) & Tocno & \begin{tabular}[c]{@{}c@{}}Type II error\\ $\beta$\\ False Negative\end{tabular} \\ \hline
+ &  & \multicolumn{2}{c|}{Nul hipoteza je} \\ \cline{3-4} 
+ &  & Tocna & Netocna \\ \hline
+\multicolumn{1}{|c|}{\multirow{2}{*}{Presuda testa je:}} & Odbaci & \begin{tabular}[c]{@{}c@{}}Greska 1. vrste\\ Lazno pozitivni\\ $P = \alpha$\end{tabular} & Tocno \\ \cline{2-4} 
+\multicolumn{1}{|c|}{} & Prihvati & Tocno & \begin{tabular}[c]{@{}c@{}}Greska 2. vrste\\ Lazno negativni \\ $P = \beta$\end{tabular} \\ \hline
 \end{tabular}
 }
 \end{table}
 
-Kakav god test odabrali da potvrdimo ili odbacimo $H_0$ on moze rezultirati u Type I ili Type II greskama. Evo jednog ilustrativnog primjera za Type I gresku.
+Kakav god test odabrali da potvrdimo ili odbacimo $H_0$ on moze rezultirati u greskama 1. ili 2. vrste. Evo jednog ilustrativnog primjera za gresku 1. vrste.
 
-\subsection{Type I greske}
+\subsection{Greske 1. vrste}
 
-Situacija je sljedeca. Vi ste cuvar nekoga sela i vasa je duznost oglasiti uzbunu ukoliko se vuk priblizava. Time je $H_0$ vuka nema. E ukoliko vuka stvarno nema, a vi ste oglasili uzbunu vi ste nacinili Type I pogresku ilitiga False positive.
+Odbacivanje nul hipoteze kada je ona tocna naziva se greskom 1. vrste. \cite{engstat}. Radi daljnjeg pojasnjenja pogledati primjer u nastavku:
+
+Situacija je sljedeca. Vi ste cuvar nekoga sela i vasa je duznost oglasiti uzbunu ukoliko se vuk priblizava. Time je $H_0$ vuka nema. E ukoliko vuka stvarno nema, a vi ste oglasili uzbunu vi ste nacinili pogresku prve vrste ilitiga lazna pozitivnost.
 
 Slicnu scenarij mozete vidjeti i s testom za trudnocu. Ukoliko krecete od hipoteze  $H_0:$ \emph{Nema trudnoce} te $H_a:$ \emph{trudnoca} te stvarno niste trudni, ali test pokazuje trudnocu to je jos jedan primjer Type I greske. Ona se oznacava s grckim slovom $\alpha$ te se naziva nivo znacajnost testa \textit{(eng. significance level)}.
 
 Pri samoj konstrukcji statistickog testa ukoliko je $H_0$ tocna mozemo lijepo ustimati $\alpha$ na prihvatljivu granicu te ga mozemo lijepo ustimati jer cesto pretpostavljamo kako funkcija razdiobe izgleda. \marginnote{Ovdje dodati jos par slika i lijepse pojasniti}
 
-\marginnote{Kod svih ovih testova koliko mi pretpostavljamo o funkciji razdiobe? Da li i u altrenativi pretpostavljamo normalnu npr. samo s drugim parametrima ili kako?}[2cm]
+\subsection{Greske 2. vrste}
 
-\subsection{Type II greske}
-
-No dobro, ovo je sve super, mozemo nastimati test da nam je $\alpha \approx 0$ no sto time dobivamo? Tu u pricu ulaze Type II greske koje imaju vjerojatnost $\beta$. Ona se dogada kada je $H_0$ netocno, no test neuspijeje pobiti $H_0$ nego presudi tocnosti nul hipoteze.
+No dobro, ovo je sve super, mozemo podesiti test da nam je $\alpha \approx 0$ no sto time dobivamo? Tu u pricu ulaze greske 2. vrste koje imaju vjerojatnost $\beta$. Ne odbacivanjem nul hipoteze, $H_0$, kada je ona netocna se naziva pogreska 2. vrste. \cite{engstat}
 
 Koristeci primjere iz prethodne sekcije, vas test presudi da vuka nema dok on stvarno dolazi pred vasa vrata. Takoder vi ste trudni dok test za trudnocu to ne pokazuje dok nije prekasno. Faktor $\beta$ je povezan s pojmom \emph{snaga testa} \textit{(eng. power)} koja iznosti $1-\beta$. Ona je definirana kao vjerojatnost da ce test odbiti $H_0$ kada je ona lazna. 
 
 No taj faktor $\beta$ je cesto nemoguce odrediti bez nekih pretpostavki. Npr. ((ovdje ubaciti neku normalnu distribuciju i koliko je beta ako je $\mu  + \delta$ te kako on ovisi. Malo matematike i formulu upisati))
 
-Kod svakog statistickog testa dolazimo do balansacije snage i znacajnosti istoga. Sto je veca snaga testa to je veca znacajnost i obratno. Idealni test bi imao snagu 1 te znacajnost 0, no to u praksi nije moguce, te time treba pazljivo balansirati ta dva parametra tjekom izrade samoga testa.
+%Malo lijepse se izraziti oko "balansacije"
+Kod izrade svakog statistickog testa dolazimo do biranja omjera snage i znacajnosti istoga. Oni se ponasaju kao na klackalici, sto je veca snaga testa to je veca znacajnost i obratno. Idealni test bi imao snagu 1 te znacajnost 0, no to u praksi nije moguce, te time treba pazljivo odabrati ta dva parametra tjekom izrade samoga testa.
 
-\marginnote{Koliko se parametri slucajne varijable mijenjaju kod linearnih transformacija? Konkretno pdf, $\mu$, $\sigma$ i $\sigma^2$. Koliko sam skuzio isto linearno osim varijance koja se kvadratno mijenja}
+\section{P vrijednosti}
+Sljedeci vazan pojam u ovom kontekstu je p vrijednost. Ona se definira kao najmanja znacajnost test, $\alpha$, za koju bi ovaj uzorak presudili odbacivanjem nul hipoteze, $H_0$ \cite{engstat}
 
-\section{Intervali pouzdanosti}
-Potom zelimo konstruirati intervale pouzdanosti za nas test. \cite{vis3} Ponovimo imamo $H_0$ hipotezu koja pretpostavlja neke parametre o distribuciju koju zelimo testirati. 
+\section{Podrucje prihvacanja}
+
+Potom zelimo konstruirati podrucje prihvacanja za nas test. \cite{vis3} Ponovimo imamo $H_0$ hipotezu koja pretpostavlja neke parametre o distribuciju koju zelimo testirati. 
 
 Neka je slucajna varijabla $X \sim \mathcal{D}$. 
 Prvo definirajmo oznaku kao u vecini literatura \cite{vis3} \cite{engstat} 
 
 $x_\alpha$ je $1-\alpha$ percentil te zadane distribucije.
 
-Nadalje, za interval pouzndanosti $p$ se kaze kada vrijedi $P(x \in \left<l, u\right>) = p$. Za test s znacajnosti $\alpha$ to zapravo znaci  $P(x \in \left<l, u\right>) = 1-\alpha$.
+Za zadani nivo znacajnosti $\alpha$ to zapravo znaci  $P(x \in \left<l, u\right>) = 1-\alpha$. Tj. da sansa da ukoliko je $H_0$ tocna vjerojatnost tocne presude iznosti $1-\alpha$
 
-Najcesce se rabe tri tipa intervala pouzdanosti:
+Najcesce se rabe tri tipa podrucja prihvacanja:
 \begin{itemize}
 	\item Gornji: $x \in \left< x_\alpha, +\infty \right>$
 	\item Doljni: $x \in \left<-\infty, x_{1-\alpha} \right>$
 	\item Dvostrani: $x \in \left<x_{1-\frac{\alpha}{2}}, x_{\frac{\alpha}{2}} \right>$
 \end{itemize}
-
-\marginnote{Kako biramo koji cemo interval pouzdanosti na kraju i koristiti?}
-
-\section{P vrijednosti}
-p-vrijednost odgovara vjerojatnosti da je nul-hipoteza tocna (tj. vjerojatnosti dobivanja uocene ili još vece razlike na slucajnim uzorcima). Takoder je najmanja $\alpha$ za koju ce nas test ne odbacuje $H_0$.\marginnote{Kako lijepo ovdje napisati fail to rejecet $H_0$ jer to ovo zapravo i radi. Ne dokazuje $H_0$ nego ju samo ne odbacuje.}
-
-\subsection{Opasnosti p vrijednosti}
-Treba naravno uzeti u obzir sto p vrijednosti objasnjavaju. Po uzoru na clanak\footnote{\url{http://rsos.royalsocietypublishing.org/content/1/3/140216}} ukoliko puno razlicitih populacija testiramo s relativno velikom p vrijednoscu od 5\% vjerojatnost laznog otkrica nije zanemariva. \marginnote{Koliko o ovome trebam detaljnije pisati u seminaru? Clanak super objasnjava sto je problematika bolje nego sto mogu ja u nekoliko paragrafa}
