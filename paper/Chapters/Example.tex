@@ -1,32 +1,32 @@
-\chapter{Statističko testiranje ocekivanja}
+\chapter{Statističko testiranje očekivanja}
 
-U ovom poglavlju cu prikazati kako se testiranje vrsi na prosjek uzoraka. Prvo pretpostavljamo da je populacija normalno distribuirana.
+U ovom ću poglavlju prikazati kako se testiranje vrši na očekivanje. Pretpostavka je testa normalna distribucije populacije.
 
-Zatim zelimo odrediti koliki nam mora biti uzorak iz te populacije da bi znacajnost testa te njegova snaga bila zadovoljavajuca i uz to sve izbalansirati. Konkretni postupci odredivanj velicine uzorka izlaze izvan okvira ovog seminara.
+Prvi je korak određivanje veličine uzorka iz te populacije da bi značajnost testa te njegova snaga bila zadovoljavajuća, no konkretni postupci određivanja veličine uzorka izlaze izvan okvira ovog seminara. 
 
-Treba naravno napomenti da ce uzorak biti distribuiran po $t$ distribuciji jer nam varijanca populacije nije poznata te pretpostavljamo normalnu distribuciju populacije.
+Kod testova na očekivanje s povećanjem uzorka nam je potrebna manji nivo značajnosti, $\alpha$ za istu preciznost. Naravno i sam $\beta$, tj. vjerojatnost greške 2. vrste se smanjuje i u graničnom postupku teže ka idealiziranom slučaju $\alpha = \beta = 0$.
 
-Ukoliko je $H_0$ tocna nasa statisika: \[\frac{\sqrt{n} (\bar{x} - \mu)}{s} \sim t_{n-1}\]
+Treba naravno napomenuti da će sam uzorak biti distribuiran po $t$ distribuciji jer nam varijanca populacije nije poznata te ju aproksimiramo iz samog uzorka.  
 
-slijedi $t$ distribuciju s $n-1$ stupnja slobode. Nakon malo matematike uz pretpostavku $H_0$:
+Ukoliko je $H_0$ točna statistika: \[\frac{\sqrt{n} (\bar{x} - \mu)}{s} \sim t_{n-1}\]
+
+slijedi $t$ distribuciju s $n-1$ stupnja slobode. Nakon malo matematike uz pretpostavku $H_0$ \cite{engstat} \cite{vis3}:
 
 \[
 \bar{x} \sim \frac{s}{\sqrt{n}} \cdot t_{n-1} + \mu
 \]
 
-Uz znacajnost testa $\alpha$ dobivamo podrucje prihvacanja $H_0$ kao \cite{matstat}:
+Uz značajnost testa $\alpha$ dobivamo područje prihvaćanja $H_0$ kao \cite{matstat}:
 
 \[
 \bar{x} \in \left<\mu - \frac{s}{\sqrt{n}} \cdot t_{n-1, \frac{\alpha}{2}}, \mu + \frac{s}{\sqrt{n}} \cdot t_{n-1, \frac{\alpha}{2}} \right>
 \]
 
-gdje $t_{n, \alpha}$ gdje pretstavlja $1-\alpha$ percentila $t$ distribucije s $n$ stupnjeva slobode, prikazano u prethodnom poglavlju.
+gdje $t_{n, \alpha}$ gdje predstavlja $1-\alpha$ percentila $t$ distribucije s $n$ stupnjeva slobode, prikazano u prethodnom poglavlju.
 
-Potom uz odredeni $\alpha$ napravimo podrucje prihvacanja za ovaj test. Ukoliko je prosjek uzorka unutar tog intervala nas test nije odbio $H_0$ te je presuda nul hipoteza, dok u suprotnom biramo $H_a$.
+Potom uz određeni $\alpha$ napravimo područje prihvaćanja za ovaj test. Ukoliko je prosjek uzorka unutar tog intervala naš test nije odbio $H_0$ te je presuda nul hipoteza, dok u suprotnom presuđujemo $H_a$.
 
-\marginnote{Treba ovdje uzeti neki primjer podataka i lijepo ih obraditi... ako stignem}[5cm]
-
-U nastavku je dan primjer programskog koda koju uz pythona te biblioteka NumPy odraduje cijeli postupak testiranja.
+U nastavku je dan primjer programskog koda koju korištenjem pythona te biblioteka NumPy i SciPy odrađuje opisani postupak testiranja.
 
 \begin{figure}[H]
 \begin{minted}{python}
@@ -37,21 +37,19 @@ from numpy.random import normal
 
 #Ovo je primjer ulaznih podata za testiranje
 data = normal(3.1, 2, 15)
-mu_test = 3
-alpha = 0.05
 
+mu_test = 3 #Ocekivanje iz nul hipoteze
+alpha = 0.05 #Nivo znacajnosti ovog testa
 
 n = data.size        # Broj uzoraka
-s = data.std(ddof=1) # Procjena standardne devijacije populaije (ne uzoraka)
+s = data.std(ddof=1) # Procjena standardne devijacije populaije
 mu_s = data.mean()   # Procjena prosjeka iz uzoraka
 mu_s_s = s/sqrt(n)   # Standardna devijacija prosjeka uzoraka
-
-#Plottanje cisto da vidimo ulazne podatke
-hist(data, bins=7);
 
 (l,u) = t.interval(1-alpha, n - 1, mu_test,  mu_s_s)
 print (l,u) #Podrucje prihvacanja
 
+#Testiram je li prosjek uzoraka unutar podrucja prihvacanja ovog testa
 if l < mu_s and  mu_s < u:
     print ("H_0")
 else:
